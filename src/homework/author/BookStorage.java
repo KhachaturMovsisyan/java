@@ -72,6 +72,8 @@ public class BookStorage {
         for (int i = 0; i < size; i++) {
             if (books[i].getAuthor().getEmail().equals(email)) {
                 index = i;
+
+
             }
         }
 

@@ -91,24 +91,39 @@ public class AuthorBookTest {
     private static void deleteBook(){
         System.out.println("please choose book's title");
         String title = scanner.nextLine();
-        bookStorage.deleteBook(title);
-        System.out.println("The book has been deleted");
-
+        if (bookStorage.getBookByTitle(title)!=null) {
+            bookStorage.deleteBook(title);
+            System.out.println("The book has been deleted");
+        }else {
+            System.out.println();
+            deleteBook();
+        }
     }
 
     private static void deleteAuthor() {
         System.out.println("please choose author's email");
         String email = scanner.nextLine();
-        authorStorage.deleteAuthor(email);
-        System.out.println("The author has been deleted");
-
+        if (authorStorage.getByEmail(email)!=null) {
+            authorStorage.deleteAuthor1(email);
+            System.out.println("The author has been deleted");
+        }else {
+            System.out.println("Authors books was deleted");
+            deleteAuthor();
+        }
     }
 
     private static void deleteByAuthor() {
         System.out.println("please choose author's email");
         String email = scanner.nextLine();
-        bookStorage.deleteByAuthorBook(email);
-        System.out.println("Authors books was deleted");
+
+        if (authorStorage.getByEmail(email)!=null){
+            bookStorage.deleteByAuthorBook(email);
+            System.out.println("Authors books was deleted");
+        }else {
+            System.out.println("There is no Author with that email");
+            deleteByAuthor();
+        }
+
 
     }
 
