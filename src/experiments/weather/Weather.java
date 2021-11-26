@@ -1,4 +1,4 @@
-package experiments;
+package experiments.weather;
 
 public class Weather<month> {
     String season;

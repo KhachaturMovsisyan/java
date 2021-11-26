@@ -54,17 +54,45 @@ public class BookStorage {
         }
 
         System.out.println(" The " + author.getName() + " " + author.getSurname() +
-                " has a " + countofAuthor  + " books");
+                " has a " + countofAuthor + " books");
     }
-
 
 
     public Book getBookByTitle(String title) {
         for (int i = 0; i < size; i++) {
-            if (books[i].getTitle().equals(title)){
+            if (books[i].getTitle().equalsIgnoreCase(title)) {
                 return books[i];
             }
         }
         return null;
+    }
+
+    public void deleteByAuthorBook(String email) {
+        int index = 0;
+        for (int i = 0; i < size; i++) {
+            if (books[i].getAuthor().getEmail().equals(email)) {
+                index = i;
+            }
+        }
+
+        for (int i =index; i < size; i++) {
+            books[i] = books[i+1];
+            size--;
+        }
+
+    }
+
+
+    public void deleteBook(String title) {
+        int index=0;
+        for (int i = 0; i < size; i++) {
+            if (books[i].getTitle().equals(title)){
+                index=i;
+            }
+        }
+        for (int i = index; i <size; i++) {
+            books[i]=books[i+i];
+        }
+        size--;
     }
 }

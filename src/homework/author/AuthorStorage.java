@@ -69,4 +69,17 @@ public class AuthorStorage {
         author.setAge(age);
 
     }
+
+    public void deleteAuthor(String email) {
+        int index=0;
+        for (int i = 0; i < size; i++) {
+            if (array[i].getEmail().equals(email))
+                index=i;
+        }
+        for (int i = index; i <size ; i++) {
+            array[i]=array[i+1];
+        }
+        size--;
+
+    }
 }

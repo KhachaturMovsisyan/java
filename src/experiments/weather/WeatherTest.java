@@ -1,4 +1,6 @@
-package experiments;
+package experiments.weather;
+
+import experiments.weather.Weather;
 
 import java.util.Scanner;
 
