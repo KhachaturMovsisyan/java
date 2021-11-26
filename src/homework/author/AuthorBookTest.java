@@ -104,7 +104,7 @@ public class AuthorBookTest {
         System.out.println("please choose author's email");
         String email = scanner.nextLine();
         if (authorStorage.getByEmail(email)!=null) {
-            authorStorage.deleteAuthor1(email);
+            authorStorage.deleteAuthor(email);
             System.out.println("The author has been deleted");
         }else {
             System.out.println("Authors books was deleted");

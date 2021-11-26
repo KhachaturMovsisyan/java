@@ -70,15 +70,15 @@ public class AuthorStorage {
 
     }
 
-    private void deleteAuthor(String email) {
+    public void deleteAuthor(String email) {
         for (int i = 0; i < size; i++) {
             if (array[i].getEmail().equals(email))
-                deleteAuthor1(email);  ;
+                deleteAuthor1(email);
         }
 
 
     }
-    public void deleteAuthor1(String email){
+    private void deleteAuthor1(String email){
         for (int i = 0; i <size ; i++) {
             array[i]=array[i+1];
         }
