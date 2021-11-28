@@ -1,7 +1,5 @@
 package experiments.shop;
 
-import homework.author.Author;
-
 public class UserStorage {
     private User[] array = new User[10];
     private int size = 0;
@@ -39,7 +37,7 @@ public class UserStorage {
 
     public User getByEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getEmail().equals(email)){
+            if (array[i].getEmail().equals(email)) {
 
                 return array[i];
             }
@@ -47,9 +45,21 @@ public class UserStorage {
         return null;
     }
 
-    public void chech(String login, String password) {
+    public User check(String login, String password) {
         for (int i = 0; i < size; i++) {
-          //  if (array[i].getLogin().equals(login) && array[i].getPassword(password));
+            if (array[i].getLogin().equals(login) && array[i].getPassword().equals(password)) {
+                return array[i];
+            }
+        }
+        return null;
+    }
+
+    public void payment(User check, double payment) {
+        for (int i = 0; i < size; i++) {
+            if(array[i].equals(check)){
+               double newBalance= array[i].getBalance() + payment;
+               array[i].setBalance(newBalance);
+            }
         }
     }
 }

@@ -96,7 +96,6 @@ public class AuthorBookTest {
             System.out.println("The book has been deleted");
         }else {
             System.out.println();
-            deleteBook();
         }
     }
 
@@ -108,20 +107,17 @@ public class AuthorBookTest {
             System.out.println("The author has been deleted");
         }else {
             System.out.println("Authors books was deleted");
-            deleteAuthor();
         }
     }
 
     private static void deleteByAuthor() {
         System.out.println("please choose author's email");
         String email = scanner.nextLine();
-
         if (authorStorage.getByEmail(email)!=null){
             bookStorage.deleteByAuthorBook(email);
             System.out.println("Authors books was deleted");
         }else {
             System.out.println("There is no Author with that email");
-            deleteByAuthor();
         }
 
 
@@ -148,7 +144,6 @@ public class AuthorBookTest {
 
         }else {
             System.out.println("Invalid email try again");
-            changeAuthor();
         }
 
     }
@@ -162,9 +157,7 @@ public class AuthorBookTest {
             bookStorage.getBookByTitle(title).setAuthor(authorStorage.getByEmail(email));
         }else {
             System.out.println("Invalid title, try again");
-            changeBookAuthor();
         }
-
     }
 
 

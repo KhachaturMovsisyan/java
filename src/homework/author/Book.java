@@ -1,6 +1,7 @@
 package homework.author;
 
 public class Book {
+    private String serialid;
     private String title;
     private String description;
     private double price;

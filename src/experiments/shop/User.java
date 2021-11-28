@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String password;
     private String login;
+    private double balance;
 
     User(){
 
@@ -23,6 +24,15 @@ public class User {
         this.email = email;
         this.password = password;
         this.login = login;
+
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public String getName() {
@@ -81,29 +91,8 @@ public class User {
         this.login = login;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", age=" + age +
-                ", gander='" + gander + '\'' +
-                ", email='" + email + '\'' +
-                ", login='" + login + '\'' +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return age == user.age && name.equals(user.name) && surname.equals(user.surname) && gander.equals(user.gander) && email.equals(user.email) && password.equals(user.password) && login.equals(user.login);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, age, gander, email, password, login);
-    }
+
 }
 
