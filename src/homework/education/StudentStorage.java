@@ -6,6 +6,7 @@ public class StudentStorage {
     private Student[] students = new Student[10];
     private int size = 0;
 
+
     public void add(Student student) {
 
         if (size == students.length) {
@@ -36,13 +37,13 @@ public class StudentStorage {
         }
     }
 
-    public void printStudentByLesson(String name) {
-        for (int i = 0; i < size; i++) {
-            if (students[i].getLesson().getName().contains(name)){
-                System.out.println(students[i]);
-            }
-        }
-    }
+//    public void printStudentByLesson(String name) {
+//        for (int i = 0; i < size; i++) {
+//        //    if (students[i].getLesson().getName().contains(name)){
+//                System.out.println(students[i]);
+//            }
+//        }
+//    }
 
     public void deleteStudentByEmail(String email) {
         for (int i = 0; i < size; i++) {
@@ -67,4 +68,6 @@ public class StudentStorage {
         }
         return null;
     }
+
+
 }

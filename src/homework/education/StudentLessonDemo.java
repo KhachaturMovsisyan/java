@@ -17,10 +17,14 @@ public class StudentLessonDemo {
     private static final String DELETE_STUDENT_BY_EMAIL = "7";
 
     public static void main(String[] args) {
-
-        lessonStorage.add(new Lesson("Java", 5, "core", 50000));
-        studentStorage.add(new Student("poxos", "poxosyan", 55, "poxos@mail.ru", "093333333", lessonStorage.getByIndex(0)));
-
+        Lesson [] lessons=new Lesson[2];
+        lessons [0]=new Lesson("Java", 5, "core", 50000);
+        lessonStorage.add(lessons[0]);
+        lessons [1]=new Lesson("C", 10, "core", 50000);
+        lessonStorage.add(lessons[1]);
+        lessonStorage.add(new Lesson("Python", 14, "core", 50000));
+        studentStorage.add(new Student("poxos", "poxosyan", 55, "poxos@mail.ru", "093333333", lessons));
+        studentStorage.add(new Student("petros", "petrosyan", 15, "petros@mai.ru", "04444444", lessons));
 
         boolean isRun = true;
         while (isRun) {
@@ -87,7 +91,7 @@ public class StudentLessonDemo {
         System.out.println("Please input lesson's name");
         String name = scanner.nextLine();
         if (lessonStorage.getLessonByName(name) != null) {
-            studentStorage.printStudentByLesson(name);
+           // studentStorage.printStudentByLesson(name);
         } else {
             System.err.println("wrong lesson name");
         }
@@ -107,19 +111,22 @@ public class StudentLessonDemo {
         String email = scanner.nextLine();
         System.out.println("please input student's phone");
         String phone = scanner.nextLine();
-        System.out.println("please input student's lesson name");
-        String nameOfLesson = scanner.nextLine();
+        System.out.println("please input student's lesson names");
+        String nameOfLessons = scanner.nextLine();
 
         if (studentStorage.getByEmail(email) == null) {
-            if (lessonStorage.getLessonByName(nameOfLesson) != null) {
-                Student student = new Student(name, surname, age, email, phone, lessonStorage.getLessonByName(nameOfLesson));
-                studentStorage.add(student);
-                System.out.println("student added");
-
-            } else {
-
-                System.out.println("lessen with this name doesnt exist");
+            String[] names = nameOfLessons.split(",");
+            Lesson[] lessons = new Lesson[names.length];
+            for (int i = 0; i < lessons.length; i++) {
+                if (lessonStorage.getLessonByName(names[i]) == null) {
+                    System.out.println("Lesson with that name is not exist");
+                } else {
+                    lessons[i] = lessonStorage.getLessonByName(names[i]);
+                }
             }
+            Student student = new Student(name, surname, age, email, phone, lessons);
+            studentStorage.add(student);
+            System.out.println("student added");
         } else {
             System.out.println("student with this email already exist");
         }
@@ -156,5 +163,5 @@ public class StudentLessonDemo {
         System.out.println("Please imput " + DELETE_STUDENT_BY_EMAIL + " for DELETE_STUDENT_BY_EMAIL");
     }
 
-
 }
+
