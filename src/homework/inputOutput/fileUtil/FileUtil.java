@@ -4,7 +4,6 @@ import java.io.*;
 
 public class FileUtil {
 
-
     public void findLines(String txtPath, String keyword) throws IOException {
         BufferedReader bf = new BufferedReader(new FileReader(txtPath));
 

@@ -5,35 +5,36 @@ import java.util.Scanner;
 
 public class FileSearchWithDirectory {
     public static void main(String[] args) {
+        //C:\Users\User\Desktop\Новая папка
+
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Please type folder path!");
         String path = scanner.nextLine();
         System.out.println("Please input file name");
         String fileName = scanner.nextLine();
-//C:\Users\User\Desktop\Новая папка
 
         File file = new File(path);
 
-        boolean b = search(file, fileName);
+        boolean b =search(file, fileName);
         System.out.println(b);
-
     }
 
     public static boolean search(File file, String filename) {
-        File[] files = file.listFiles();
-        boolean find = false;
-        if (files != null) {
-            for (File singleFile : files) {
-                if (singleFile.getName().equals(filename)) {
-                    find = true;
-                    return find;
+        boolean a = false;
+        if (file.isDirectory()) {
+            for (File file1 : file.listFiles()) {
+                if (file1.isDirectory()) {
+                    search(file1, filename);
                 } else {
-                    search(singleFile, filename);
+                    if (file1.getName().equals(filename)) {
+                        a = true;
+                        break;
+                    }
                 }
-
             }
         }
-        return find;
+        return a;
 
     }
 }

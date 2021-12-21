@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class ContentSearch {
     //C:\\Users\\User\\Desktop\\Новая папка
-
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please type folder path!");
@@ -18,8 +17,6 @@ public class ContentSearch {
 
         File file = new File(path);
         contentSearch(file, content);
-
-
     }
 
     private static void contentSearch(File file, String content) {
@@ -30,11 +27,9 @@ public class ContentSearch {
                     System.out.println(listFile.getName());
                 }
                 else {
-                    System.out.println("We don't have that content!");
+                    System.out.println("We not that content!");
                 }
             }
-
-
         }catch (IOException e){
             e.getMessage();
         }
