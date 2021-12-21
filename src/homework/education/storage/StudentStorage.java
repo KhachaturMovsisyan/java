@@ -1,6 +1,7 @@
-package homework.education;
+package homework.education.storage;
 
 
+import homework.education.model.Student;
 
 public class StudentStorage {
     private Student[] students = new Student[10];
@@ -47,7 +48,7 @@ public class StudentStorage {
 
     public void deleteStudentByEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (students[i].getEmail().equals(email)){
+            if (students[i].getEmail().equals(email)) {
                 deleteStudent();
             }
         }
@@ -55,14 +56,14 @@ public class StudentStorage {
 
     private void deleteStudent() {
         for (int i = 0; i < size; i++) {
-            students[i]=students[i+1];
+            students[i] = students[i + 1];
             size--;
         }
     }
 
     public Student getByEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (students[i].getEmail().equals(email)){
+            if (students[i].getEmail().equals(email)) {
                 return students[i];
             }
         }
@@ -70,4 +71,32 @@ public class StudentStorage {
     }
 
 
+    public Student getByLoginAndPassword(String login, String password) {
+        for (int i = 0; i < size; i++) {
+            if (students[i].getLogin().equals(login) && students[i].getPassword().equals(password)) {
+                return students[i];
+            }
+        }
+        return null;
+    }
+
+    public void printMyLesson(Student currentStudent) {
+
+        for (int i = 0; i < size; i++) {
+            if (students[i].equals(currentStudent)) {
+                System.out.println(students[i].getLessons());
+
+            }
+        }
+    }
+
+    public Student getStudentByEmailandLogin(String email, String logIn) {
+        for (int i = 0; i < size; i++) {
+            if (students[i].getEmail().equals(email) &&students[i].getLogin().equals(logIn)) {
+                return students[i];
+            }
+
+        }
+        return  null;
+    }
 }

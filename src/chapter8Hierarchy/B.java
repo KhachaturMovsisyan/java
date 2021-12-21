@@ -6,8 +6,14 @@ public class B extends A {
         System.out.println("k: "+ k);
 
     }
-    void sum(){
+    void sum() {
         System.out.println("i+j+k: "+ (i+j+k));
     }
+
+//    @Override
+//    void print() {
+//        super.print();
+//        System.out.println("java");
+//    }
 
 }

@@ -1,4 +1,6 @@
-package homework.author;
+package homework.author.storage;
+
+import homework.author.model.Author;
 
 public class AuthorStorage {
 

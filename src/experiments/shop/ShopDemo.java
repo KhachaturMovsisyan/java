@@ -1,9 +1,6 @@
 package experiments.shop;
 
-import homework.author.Author;
-
 import java.util.Scanner;
-import java.util.function.DoubleBinaryOperator;
 
 public class ShopDemo {
     private static Scanner scanner = new Scanner(System.in);
@@ -22,17 +19,26 @@ public class ShopDemo {
     private static final String BUY_PRODUCT = "3";
 
 
-
     public static void main(String[] args) {
+        User user = new User("Poxos", "Poxosyan", 55, "male", "poxos@mail.ru", "user", "user");
+        user.setBalance(500);
+        Product cola = new Product("cola", 3, 150);
+        Product fanta = new Product("fanta", 3, 150);
+        Product pepsi = new Product("pepsi", 3, 150);
+        userStorage.add(user);
+        productStorage.add(cola);
+        productStorage.add(fanta);
+        productStorage.add(pepsi);
 
-        boolean isrun=true;
 
-        while (isrun){
+        boolean isRun = true;
+
+        while (isRun) {
             printCommand();
-            String comand=scanner.nextLine();
-            switch (comand){
+            String command = scanner.nextLine();
+            switch (command) {
                 case EXIT:
-                    isrun=false;
+                    isRun = false;
                     break;
                 case LOGIN:
                     loginInterface();
@@ -44,7 +50,6 @@ public class ShopDemo {
                     System.out.println("Invalid command");
             }
         }
-
 
 
     }
@@ -72,8 +77,7 @@ public class ShopDemo {
         String login = scanner.nextLine();
 
 
-
-        User user = new User(name,surname,age,gender,email,password,login);
+        User user = new User(name, surname, age, gender, email, password, login);
         if (userStorage.getByEmail(user.getEmail()) != null) {
             System.err.println("Invalid email. Author with this email already exists");
         } else {
@@ -91,55 +95,71 @@ public class ShopDemo {
         System.out.println("please input your password");
         String password = scanner.nextLine();
 
-        if(login.equals("Admin") && password.equals("Admin")){
+        if (login.equals("Admin") && password.equals("Admin")) {
             adminInterface();
-        }
-        else {
-            userInterface(login,password);
+        } else {
+            userInterface(login, password);
         }
     }
 
+
     private static void userInterface(String login, String password) {
-        if(userStorage.check(login,password)!=null){
+        if (userStorage.check(login, password) != null) {
             userCommands();
             boolean isRun = true;
+            User currentUser = userStorage.check(login, password);
             String userComand = scanner.nextLine();
-            while (isRun){
-                switch (userComand){
+            while (isRun) {
+                switch (userComand) {
                     case BACK:
-                        isRun=false;
+                        isRun = false;
                         break;
                     case EDIT_USER:
-                        editUser(userStorage.check(login,password));
+                        editUser(userStorage.check(login, password));
                         break;
                     case ADD_BALANCE:
-                        addBalance(userStorage.check(login,password));
+                        addBalance(userStorage.check(login, password));
                         break;
                     case BUY_PRODUCT:
-                        buyProduct();
-
+                        buyProduct(currentUser);
                         break;
                     default:
                         System.out.println("Invalid Command");
-
-
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("Wrong email or password !!!");
             loginInterface();
         }
 
     }
 
-    private static void buyProduct() {
+    private static void buyProduct(User user) {
+        productStorage.print();
+        System.out.println("choose which product you want to buy");
+        String productName = scanner.nextLine();
+        Product product = productStorage.getProductByName(productName);
+        System.out.println("How many " + productName + " you want to buy?");
+        int count = Integer.parseInt(scanner.nextLine());
+        if (product != null) {
+            if (user.getBalance() >= count * product.getPrice() && product.getCount() >= count) {
+                double newBalance = user.getBalance() - count * product.getPrice();
+                int newCount = product.getCount() - count;
+                user.setBalance(newBalance);
+                product.setCount(newCount);
+            } else {
+                System.out.println("You don't have enough money or We don't have that much " + productName);
+            }
+        } else {
+            System.out.println("We don't have that product!!!");
+        }
+
     }
 
     private static void addBalance(User check) {
         System.out.println("Type your money");
         double payment = Double.parseDouble(scanner.nextLine());
-        userStorage.payment(check,payment);
+        userStorage.payment(check, payment);
     }
 
     private static void editUser(User check) {
@@ -148,13 +168,14 @@ public class ShopDemo {
 
     private static void userCommands() {
         System.out.println("Please Input " + BACK + "for BACK");
-        System.out.println("Please Input " + EDIT_USER +" for edit your accaunt");
-        System.out.println("Please Input " + ADD_BALANCE +" for ADD BALANCE your accaunt");
-        System.out.println("Please Input " + BUY_PRODUCT +" for BUY PRODUCT");
+        System.out.println("Please Input " + EDIT_USER + " for edit your accaunt");
+        System.out.println("Please Input " + ADD_BALANCE + " for ADD BALANCE your accaunt");
+        System.out.println("Please Input " + BUY_PRODUCT + " for BUY PRODUCT");
 
     }
 
     private static void adminInterface() {
+
 
     }
 

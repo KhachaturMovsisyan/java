@@ -1,7 +1,5 @@
 package experiments.shop;
 
-import java.util.Objects;
-
 public class User {
     private String name;
     private String surname;
@@ -15,6 +13,7 @@ public class User {
     User(){
 
     }
+
 
     public User(String name, String surname, int age, String gander, String email, String password, String login) {
         this.name = name;

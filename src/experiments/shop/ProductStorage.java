@@ -1,7 +1,5 @@
 package experiments.shop;
 
-import homework.author.Author;
-
 public class ProductStorage {
     private Product[] array = new Product[10];
     private int size = 0;
@@ -36,4 +34,14 @@ public class ProductStorage {
         }
 
     }
+
+    public Product getProductByName(String buy) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].getName().equals(buy))
+                return array[i];
+        }
+        return null;
+    }
+
+
 }

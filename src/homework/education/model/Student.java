@@ -1,4 +1,4 @@
-package homework.education;
+package homework.education.model;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -10,17 +10,36 @@ public class Student {
     private String email;
     private String phone;
     private Lesson[] lessons;
+    private String date;
+    private String login;
+    private String password;
+    private String type;
 
-    public Student(String name, String surname, int age, String email, String phone, Lesson[] lessons) {
+    public Student(){
+
+    }
+
+    public Student(String name, String surname, int age, String email, String phone, String date, String login, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+        this.phone = phone;
+        this.date = date;
+        this.login = login;
+        this.password = password;
+    }
+
+    public Student(String name, String surname, int age, String email, String phone, Lesson[] lessons, String date, String login, String password) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.email = email;
         this.phone = phone;
         this.lessons = lessons;
-    }
-    public Student(){
-
+        this.date = date;
+        this.login = login;
+        this.password = password;
     }
 
     public String getName() {
@@ -71,6 +90,30 @@ public class Student {
         this.lessons = lessons;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -80,6 +123,9 @@ public class Student {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", lessons=" + Arrays.toString(lessons) +
+                ", date='" + date + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -88,13 +134,14 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return age == student.age && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(email, student.email) && Objects.equals(phone, student.phone) && Arrays.equals(lessons, student.lessons);
+        return age == student.age && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(email, student.email) && Objects.equals(phone, student.phone) && Arrays.equals(lessons, student.lessons) && Objects.equals(date, student.date) && Objects.equals(login, student.login) && Objects.equals(password, student.password);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, surname, age, email, phone);
+        int result = Objects.hash(name, surname, age, email, phone, date, login, password);
         result = 31 * result + Arrays.hashCode(lessons);
         return result;
     }
+
 }
