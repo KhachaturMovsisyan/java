@@ -17,7 +17,6 @@ public class StudentLessonDemo implements Commands, DateUtil {
 
     public static void main(String[] args) {
 
-
         Lesson[] lessons = new Lesson[2];
         lessons[0] = new Lesson("Java", 5, "core", 50000);
         lessons[1] = new Lesson("C", 10, "core", 50000);
@@ -303,6 +302,8 @@ public class StudentLessonDemo implements Commands, DateUtil {
         }
 
     }
+
+
 
 
     private static void addStudent()  {

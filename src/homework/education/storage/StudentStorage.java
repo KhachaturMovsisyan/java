@@ -99,4 +99,8 @@ public class StudentStorage {
         }
         return  null;
     }
+
+    public static void printStudentByLesson(){
+        System.out.println("fghj");
+    }
 }

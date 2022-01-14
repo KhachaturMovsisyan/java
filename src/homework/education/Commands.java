@@ -1,6 +1,6 @@
 package homework.education;
 
-public interface Commands {
+public interface Commands{
     String EXIT = "0";
     String ADD_LESSON = "1";
     String ADD_STUDENT = "2";

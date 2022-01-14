@@ -5,7 +5,8 @@ import java.util.Scanner;
 //C:\Users\User\Desktop\Новая папка\papka\Excel.xlsx
 public class FileUtilTest {
     public static void main(String[] args) throws IOException {
-        FileUtil fileUtil=new FileUtil();
+        FileUtil fileUtil;
+        fileUtil = new FileUtil();
         Scanner scanner=new Scanner(System.in);
 
         System.out.println("Please input path of txt file!");
